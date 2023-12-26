@@ -4,7 +4,20 @@ import org.upskill.utils.Data;
 
 public class Main {
     public static void main(String[] args) {
-      
+        /**
+         * Criação de 10 instâncias do tipo Data.
+         */
+
+        Data d1 = new Data(1992, 4, 6);
+        Data d2 = new Data(1990, 12, 16);
+        Data d3 = new Data(1982, 3, 15);
+        Data d4 = new Data(2002, 1, 17);
+        Data d5 = new Data(1999, 2, 3);
+        Data d6 = new Data(1983, 3, 18);
+        Data d7 = new Data(1996, 8, 14);
+        Data d8 = new Data(1955, 4, 1);
+        Data d9 = new Data(1974, 4, 25);
+        Data d10 = new Data(2006, 11, 9);
 
         /**
          * Criação de uma instância da classe Ginásio
