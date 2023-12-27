@@ -40,7 +40,15 @@ public class Ginasio implements Comparable <Pessoa> {
      * @param morada a morada do ginásio
      * @param pessoas o ArrayList tipo List das pessoas do ginásio
      */
-    public Ginasio(String nome, String morada, List<Pessoa>pessoas){
+    public Ginasio(String nome, String morada, List<Pessoa> pessoas) {
+        if (nome == null || nome.isEmpty()) {
+            throw new IllegalArgumentException("O nome não pode ser nulo ou vazio.");
+        }
+
+        if (morada == null || morada.isEmpty()) {
+            throw new IllegalArgumentException("A morada não pode ser nula ou vazia.");
+        }
+
         this.nome = nome;
         this.morada = morada;
         this.pessoas = pessoas;
