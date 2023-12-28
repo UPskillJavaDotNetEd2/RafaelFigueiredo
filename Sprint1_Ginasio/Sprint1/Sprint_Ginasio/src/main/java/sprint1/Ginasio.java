@@ -42,11 +42,11 @@ public class Ginasio implements Comparable <Pessoa> {
      */
     public Ginasio(String nome, String morada, List<Pessoa> pessoas) {
         if (nome == null || nome.isEmpty()) {
-            throw new IllegalArgumentException("O nome não pode ser nulo ou vazio.");
+            throw new NomeInvalidoException("O nome não pode ser nulo ou vazio.");
         }
 
         if (morada == null || morada.isEmpty()) {
-            throw new IllegalArgumentException("A morada não pode ser nula ou vazia.");
+            throw new MoradaInvalidaException("A morada não pode ser nula ou vazia.");
         }
 
         this.nome = nome;
