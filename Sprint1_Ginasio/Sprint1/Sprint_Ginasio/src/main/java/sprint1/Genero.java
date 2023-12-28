@@ -8,29 +8,20 @@ public enum Genero {
     /**
      * Representa o género masculino.
      */
-    MASCULINO {
-        /**
-         * Retorna uma representação de string para o género masculino.
-         *
-         * @return Uma string representando o género como "Masculino".
-         */
-        @Override
-        public String toString(){
-            return "Masculino";
-        }
-    },
+    MASCULINO ("Maculino"),
     /**
      * Representa o género feminino.
      */
-    FEMININO {
-        /**
-         * Retorna uma representação de string para o género feminino.
-         *
-         * @return Uma string representando o género como "Feminino".
-         */
-        @Override
-        public String toString() {
-            return "Feminino";
-        }
+    FEMININO ("Feminino");
+
+    public final String nome;
+
+    Genero(String string){
+        this.nome=string;
+    }
+
+    @Override
+    public String toString() {
+        return nome;
     }
 }
