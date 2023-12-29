@@ -51,25 +51,12 @@ public class Esporadico extends Cliente implements HorasExtraAulas, CustoAulas{
      * @param numeroHorasPermanecimento o número de horas de permanecimento do cliente esporádico
      *
      */
-    public Esporadico(String nome, String morada, Genero genero, Data dataNascimento, float altura, int peso, int numeroAulas, int numeroAulasHidroginastica, int numeroHorasPermanecimento){
+    public Esporadico(String nome, String morada, Genero genero, Data dataNascimento, float altura, int peso, int numeroAulas, int numeroAulasHidroginastica, int numeroHorasPermanecimento) throws NumeroHorasPermanecimentoException {
 
         super(getPrefixoCliente() + Tipo.ESPORADICO +"-"+(++contador),nome, morada, genero, dataNascimento, altura, peso, numeroAulas, numeroAulasHidroginastica);
 
-
-        if (altura <= 0) {
-            throw new IllegalArgumentException("Altura tem de ser maior que 0");
-        }
-        if (peso <= 0) {
-            throw new IllegalArgumentException("Peso tem de ser maior que 0");
-        }
-        if (numeroAulas < 0) {
-            throw new IllegalArgumentException("Numero de aulas nao pode ser um valor negativo");
-        }
-        if (numeroAulasHidroginastica < 0) {
-            throw new IllegalArgumentException("Numero de aulas de hidroginastica nao pode ser um valor negativo");
-        }
         if (numeroHorasPermanecimento < 0) {
-            throw new IllegalArgumentException("Numero de horas permanecidas nao pode ser um valor negativo");
+            throw new NumeroHorasPermanecimentoException("Numero de horas permanecidas nao pode ser um valor negativo");
         }
 
         this.numeroHorasPermanecimento=numeroHorasPermanecimento;
