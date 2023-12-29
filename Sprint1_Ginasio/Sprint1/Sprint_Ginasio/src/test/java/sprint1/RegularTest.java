@@ -11,7 +11,7 @@ class RegularTest {
     private Regular regular;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws NumeroDeSessoesInvalidoException, CustoMensalidadeException {
         regular = new Regular("Nome", "Morada", Genero.MASCULINO, new Data(), 1.75f, 70, 5, 2, 50.0, 10, 8.0, true);
     }
 
