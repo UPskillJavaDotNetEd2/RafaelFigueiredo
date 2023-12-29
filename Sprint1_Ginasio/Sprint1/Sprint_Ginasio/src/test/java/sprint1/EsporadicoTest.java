@@ -11,7 +11,7 @@ class EsporadicoTest {
     private Esporadico esporadico;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws NumeroHorasPermanecimentoException {
         esporadico = new Esporadico("Nome", "Morada", Genero.MASCULINO, new Data(), 1.90f, 170, 5, 2, 10);
     }
 
