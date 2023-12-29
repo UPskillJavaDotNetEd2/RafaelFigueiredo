@@ -76,7 +76,7 @@ public class Regular extends Cliente implements PagamentoSessoesPT{
      * @param custoPorSessao o custo por sessão
      * @param estado o estado
      */
-    public Regular(String nome, String morada, Genero genero, Data dataNascimento, float altura, int peso, int numeroAulas, int numeroAulasHidroginastica, double custoMensalidade, int numeroSessoes, double custoPorSessao, boolean estado ) throws NumeroDeSessoesInvalidoException, CustoPorSessaoInvalidoException {
+    public Regular(String nome, String morada, Genero genero, Data dataNascimento, float altura, int peso, int numeroAulas, int numeroAulasHidroginastica, double custoMensalidade, int numeroSessoes, double custoPorSessao, boolean estado ) throws NumeroDeSessoesInvalidoException, CustoPorSessaoInvalidoException, CustoMensalidadeException {
 
         super(getPrefixoCliente() + Tipo.REGULAR+"-"+(++contador),nome, morada, genero, dataNascimento, altura, peso, numeroAulas, numeroAulasHidroginastica);
 
@@ -86,6 +86,10 @@ public class Regular extends Cliente implements PagamentoSessoesPT{
 
         if (custoPorSessao < 0) {
             throw new CustoPorSessaoInvalidoException();
+        }
+
+        if (custoMensalidade < 0){
+            throw new CustoMensalidadeException();
         }
 
         this.custoMensalidade = custoMensalidade;
