@@ -5,7 +5,7 @@ import org.upskill.utils.Data;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NumeroDeSessoesInvalidoException, CustoMensalidadeException {
 
         /**
          * Criação de uma instância da classe Ginásio
@@ -156,10 +156,6 @@ public class Main {
                     } catch (MoradaInvalidaException e) {
                         System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
                     } catch (GeneroInvalidoException e) {
-                        System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
-                    } catch (NumeroHorasPermanecimentoException e) {
-                        System.out.printf("** Erro no número de horas de permanecimento ** \n%s\n", e.getMessage());
-                    } catch (NumeroDeSessoesInvalidoException e) {
                         System.out.printf("** Erro no número de sessões ** \n%s\n", e.getMessage());
                     } catch (CustoPorSessaoInvalidoException e) {
                         System.out.printf("** Erro no custo por sessão ** \n%s\n", e.getMessage());
@@ -196,7 +192,7 @@ public class Main {
                         regular.setCustoPorSessao(Integer.parseInt(custoSessao));
                         System.out.println("Estado: ");
                         String estado = scanner.nextLine();
-                        regular.setEstado(estado);
+                        regular.setEstado(Boolean.parseBoolean(estado));
 
                         regulares[contador] = regular;
                         contador++;
@@ -215,54 +211,52 @@ public class Main {
                         System.out.printf("** Erro no número de sessões ** \n%s\n", e.getMessage());
                     } catch (CustoPorSessaoInvalidoException e) {
                         System.out.printf("** Erro no custo por sessão ** \n%s\n", e.getMessage());
-                    }catch (EstadoInvalidoException e) {
-                        System.out.printf("** Erro no estado ** \n%s\n", e.getMessage());
                     }
-
-                } while (contador <= 3);
+                }while (contador <= 3);
                 break;
+
             case 5:
-                Esporadico[] esporadicos = new Esporadico[3];
-                do {
+                    Esporadico[] esporadicos = new Esporadico[3];
+                    do {
 
-                    try {
-                        System.out.printf("### Cliente Esporádico %d ###\n", contador);
-                        Esporadico esporadico = new Esporadico();
-                        System.out.printf("Identificador: CLI-ESPORÁDICO-%d\n", contador);
-                        System.out.println("Nome: ");
-                        String nome = scanner.nextLine();
-                        esporadico.setNome(nome);
-                        System.out.println("Morada: ");
-                        String morada = scanner.nextLine();
-                        esporadico.setMorada(morada);
-                        System.out.println("Género (Masculino/Feminino): ");
-                        String genero = scanner.nextLine();
-                        esporadico.setGenero(genero);
-                        Data data = lerData();
-                        System.out.println("Número de horas de permanecimento: ");
-                        String numeroHorasPermanecimento = scanner.nextLine();
-                        esporadico.setNumeroHorasPermanecimento(Integer.parseInt(numeroHorasPermanecimento));
+                        try {
+                                System.out.printf("### Cliente Esporádico %d ###\n", contador);
+                                Esporadico esporadico = new Esporadico();
+                                System.out.printf("Identificador: CLI-ESPORÁDICO-%d\n", contador);
+                                System.out.println("Nome: ");
+                                String nome = scanner.nextLine();
+                                esporadico.setNome(nome);
+                                System.out.println("Morada: ");
+                                String morada = scanner.nextLine();
+                                esporadico.setMorada(morada);
+                                System.out.println("Género (Masculino/Feminino): ");
+                                String genero = scanner.nextLine();
+                                esporadico.setGenero(genero);
+                                Data data = lerData();
+                                System.out.println("Número de horas de permanecimento: ");
+                                String numeroHorasPermanecimento = scanner.nextLine();
+                                esporadico.setNumeroHorasPermanecimento(Integer.parseInt(numeroHorasPermanecimento));
 
-                        esporadicos[contador] = esporadico;
-                        contador++;
+                                esporadicos[contador] = esporadico;
+                                contador++;
 
-                    } catch (IdentificadorInvalidoException e) {
-                        System.out.printf("** Erro no identificador ** \n%s\n", e.getMessage());
-                    } catch (NomeInvalidoException e) {
-                        System.out.printf("** Erro no nome ** \n%s\n", e.getMessage());
-                    } catch (MoradaInvalidaException e) {
-                        System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
-                    } catch (GeneroInvalidoException e) {
-                        System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
-                    }catch (NumeroHorasPermanecimentoInvalidoException e) {
-                        System.out.printf("** Erro no número de horas de Permanecimento ** \n%s\n", e.getMessage());
-                    }
+                            } catch (IdentificadorInvalidoException e) {
+                                System.out.printf("** Erro no identificador ** \n%s\n", e.getMessage());
+                            } catch (NomeInvalidoException e) {
+                                System.out.printf("** Erro no nome ** \n%s\n", e.getMessage());
+                            } catch (MoradaInvalidaException e) {
+                                System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
+                            } catch (GeneroInvalidoException e) {
+                                System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
+                            } catch (NumeroHorasPermanecimentoException e) {
+                                System.out.printf("** Erro no número de horas de Permanecimento ** \n%s\n", e.getMessage());
+                            }
 
-                } while (contador <= 3);
-                break;
-            default:
-                System.out.println("Opção inválida!");
-        }
+                        } while (contador <= 3);
+                        break;
+                    default:
+                        System.out.println("Opção inválida!");
+
 
 
         /**
@@ -414,8 +408,8 @@ public class Main {
         /**
          * Criação de 1 objeto do tipo Treinador
          */
-
-        Treinador t4 = new Treinador("Laura Silva", "Avenida Municipal", Genero.FEMININO, d7, 900.0, 10, 9.0);
+        Data d1 = new Data(1992, 4, 6);
+        Treinador t4 = new Treinador("Laura Silva", "Avenida Municipal", Genero.FEMININO, d1, 900.0, 10, 9.0);
 
         System.out.println("### ADICIONAR O CLIENTE DAVID GOMES ###");
 
@@ -429,6 +423,10 @@ public class Main {
          * @param cr1 A pessoa a ser adicionada ao ginásio.
          * @return {@code true} se a pessoa foi adicionada com sucesso, {@code false} se a pessoa já existir na lista do ginásio.
          */
+
+        Data d2 = new Data(1990, 12, 16);
+
+        Regular cr1 = new Regular("Pedro Costa", "Rua Principal", Genero.MASCULINO, d2, 1.80f, 145, 0, 0, 50.0, 0, 0, false);
 
         if (ginasio.adicionarPessoa(cr1)) {
             System.out.println("Pessoa adicionada com sucesso!");
@@ -500,4 +498,5 @@ public class Main {
 
         return d;
     }
+}
 }
