@@ -56,7 +56,7 @@ public class Esporadico extends Cliente implements HorasExtraAulas, CustoAulas{
         super(getPrefixoCliente() + Tipo.ESPORADICO +"-"+(++contador),nome, morada, genero, dataNascimento, altura, peso, numeroAulas, numeroAulasHidroginastica);
 
         if (numeroHorasPermanecimento < 0) {
-            throw new NumeroHorasPermanecimentoException("Numero de horas permanecidas nao pode ser um valor negativo");
+            throw new NumberFormatException();
         }
 
         this.numeroHorasPermanecimento=numeroHorasPermanecimento;

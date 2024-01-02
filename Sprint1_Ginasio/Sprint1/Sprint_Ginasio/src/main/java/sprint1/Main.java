@@ -205,9 +205,7 @@ public class Main {
                         System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
                     } catch (GeneroInvalidoException e) {
                         System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
-                    } catch (CustoMensalidadeException e) {
-                        System.out.printf("** Erro no custo da mensalidade ** \n%s\n", e.getMessage());
-                    } catch (NumeroDeSessoesInvalidoException e) {
+                    } catch (NumberFormatException e) {
                         System.out.printf("** Erro no número de sessões ** \n%s\n", e.getMessage());
                     } catch (CustoPorSessaoInvalidoException e) {
                         System.out.printf("** Erro no custo por sessão ** \n%s\n", e.getMessage());
@@ -248,7 +246,7 @@ public class Main {
                         System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
                     } catch (GeneroInvalidoException e) {
                         System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
-                    } catch (NumeroHorasPermanecimentoException e) {
+                    } catch (NumberFormatException e) {
                         System.out.printf("** Erro no número de horas de Permanecimento ** \n%s\n", e.getMessage());
                     }
 

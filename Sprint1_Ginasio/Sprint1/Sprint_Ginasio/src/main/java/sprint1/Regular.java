@@ -81,7 +81,7 @@ public class Regular extends Cliente implements PagamentoSessoesPT{
         super(getPrefixoCliente() + Tipo.REGULAR+"-"+(++contador),nome, morada, genero, dataNascimento, altura, peso, numeroAulas, numeroAulasHidroginastica);
 
         if (numeroSessoes < 0) {
-            throw new NumeroDeSessoesInvalidoException();
+            throw new NumberFormatException();
         }
 
         if (custoPorSessao < 0) {
