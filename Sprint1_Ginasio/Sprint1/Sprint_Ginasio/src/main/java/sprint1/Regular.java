@@ -95,7 +95,7 @@ public class Regular extends Cliente implements PagamentoSessoesPT{
         this.custoMensalidade = custoMensalidade;
         this.numeroSessoes = numeroSessoes;
         this.custoPorSessao = custoPorSessao;
-        this.estado = estado;
+        setEstado(estado);
     }
     /**
      * Constrói uma instância Regular que recebe o identificador, o nome, a morada,
@@ -212,6 +212,15 @@ public class Regular extends Cliente implements PagamentoSessoesPT{
      */
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+    public void setEstado(String estado){
+        if("true".equalsIgnoreCase(estado)){
+            this.estado=true;
+        }else if ("false".equalsIgnoreCase(estado)){
+            this.estado=false;
+        }else{
+            throw new EstadoInvalidoException(String.format("Estado %s é inválido!", estado));
+        }
     }
     /**
      * Devolve a descrição textual do Regular
