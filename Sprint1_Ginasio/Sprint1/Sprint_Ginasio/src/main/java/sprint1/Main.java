@@ -34,7 +34,7 @@ public class Main {
                     try {
                         System.out.printf("### Treinador %d ###\n", contador);
                         Treinador treinador = new Treinador();
-                        System.out.printf("Identificador: TREI-%d\n",contador);
+                        System.out.printf("Identificador: TREI-%d\n", contador);
                         System.out.println("Nome: ");
                         String nome = scanner.nextLine();
                         treinador.setNome(nome);
@@ -212,291 +212,290 @@ public class Main {
                     } catch (CustoPorSessaoInvalidoException e) {
                         System.out.printf("** Erro no custo por sessão ** \n%s\n", e.getMessage());
                     }
-                }while (contador <= 3);
+                } while (contador <= 3);
                 break;
 
             case 5:
-                    Esporadico[] esporadicos = new Esporadico[3];
-                    do {
+                Esporadico[] esporadicos = new Esporadico[3];
+                do {
 
-                        try {
-                                System.out.printf("### Cliente Esporádico %d ###\n", contador);
-                                Esporadico esporadico = new Esporadico();
-                                System.out.printf("Identificador: CLI-ESPORÁDICO-%d\n", contador);
-                                System.out.println("Nome: ");
-                                String nome = scanner.nextLine();
-                                esporadico.setNome(nome);
-                                System.out.println("Morada: ");
-                                String morada = scanner.nextLine();
-                                esporadico.setMorada(morada);
-                                System.out.println("Género (Masculino/Feminino): ");
-                                String genero = scanner.nextLine();
-                                esporadico.setGenero(genero);
-                                Data data = lerData();
-                                System.out.println("Número de horas de permanecimento: ");
-                                String numeroHorasPermanecimento = scanner.nextLine();
-                                esporadico.setNumeroHorasPermanecimento(Integer.parseInt(numeroHorasPermanecimento));
+                    try {
+                        System.out.printf("### Cliente Esporádico %d ###\n", contador);
+                        Esporadico esporadico = new Esporadico();
+                        System.out.printf("Identificador: CLI-ESPORÁDICO-%d\n", contador);
+                        System.out.println("Nome: ");
+                        String nome = scanner.nextLine();
+                        esporadico.setNome(nome);
+                        System.out.println("Morada: ");
+                        String morada = scanner.nextLine();
+                        esporadico.setMorada(morada);
+                        System.out.println("Género (Masculino/Feminino): ");
+                        String genero = scanner.nextLine();
+                        esporadico.setGenero(genero);
+                        Data data = lerData();
+                        System.out.println("Número de horas de permanecimento: ");
+                        String numeroHorasPermanecimento = scanner.nextLine();
+                        esporadico.setNumeroHorasPermanecimento(Integer.parseInt(numeroHorasPermanecimento));
 
-                                esporadicos[contador] = esporadico;
-                                contador++;
+                        esporadicos[contador] = esporadico;
+                        contador++;
 
-                            } catch (IdentificadorInvalidoException e) {
-                                System.out.printf("** Erro no identificador ** \n%s\n", e.getMessage());
-                            } catch (NomeInvalidoException e) {
-                                System.out.printf("** Erro no nome ** \n%s\n", e.getMessage());
-                            } catch (MoradaInvalidaException e) {
-                                System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
-                            } catch (GeneroInvalidoException e) {
-                                System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
-                            } catch (NumeroHorasPermanecimentoException e) {
-                                System.out.printf("** Erro no número de horas de Permanecimento ** \n%s\n", e.getMessage());
-                            }
+                    } catch (IdentificadorInvalidoException e) {
+                        System.out.printf("** Erro no identificador ** \n%s\n", e.getMessage());
+                    } catch (NomeInvalidoException e) {
+                        System.out.printf("** Erro no nome ** \n%s\n", e.getMessage());
+                    } catch (MoradaInvalidaException e) {
+                        System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
+                    } catch (GeneroInvalidoException e) {
+                        System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
+                    } catch (NumeroHorasPermanecimentoException e) {
+                        System.out.printf("** Erro no número de horas de Permanecimento ** \n%s\n", e.getMessage());
+                    }
 
-                        } while (contador <= 3);
-                        break;
-                    default:
-                        System.out.println("Opção inválida!");
+                } while (contador <= 3);
+                break;
+            default:
+                System.out.println("Opção inválida!");
 
 
+                /**
+                 * Impressão da string "#####-:- GINÁSIO -:-####".
+                 */
+                System.out.println("#####-:- GINÁSIO " + ginasio.getNome() + " -:-####");
 
-        /**
-         * Impressão da string "#####-:- GINÁSIO -:-####".
-         */
-        System.out.println("#####-:- GINÁSIO " + ginasio.getNome() + " -:-####");
+                System.out.println();
+                /**
+                 * Impressão da string "### SALDO DO GINÁSIO - RECEITAS E GASTOS ###".
+                 */
+                System.out.println("### SALDO DO GINÁSIO - RECEITAS E GASTOS ###");
+                System.out.println();
+                /**
+                 * Impressão das receitas, gastos e o saldo do ginásio.
+                 */
+                ginasio.calcularEApresentarSaldo();
 
-        System.out.println();
-        /**
-         * Impressão da string "### SALDO DO GINÁSIO - RECEITAS E GASTOS ###".
-         */
-        System.out.println("### SALDO DO GINÁSIO - RECEITAS E GASTOS ###");
-        System.out.println();
-        /**
-         * Impressão das receitas, gastos e o saldo do ginásio.
-         */
-        ginasio.calcularEApresentarSaldo();
+                System.out.println();
+                /**
+                 * Impressão da string "### PESSOAS DO GINÁSIO ###"
+                 */
+                System.out.println("### PESSOAS DO GINÁSIO ###");
+                System.out.println();
+                /**
+                 * Impressão da lista de pessoas que frequentam o ginásio.
+                 */
+                System.out.println(ginasio);
 
-        System.out.println();
-        /**
-         * Impressão da string "### PESSOAS DO GINÁSIO ###"
-         */
-        System.out.println("### PESSOAS DO GINÁSIO ###");
-        System.out.println();
-        /**
-         * Impressão da lista de pessoas que frequentam o ginásio.
-         */
-        System.out.println(ginasio);
+                System.out.println();
+                /**
+                 * Impressão da string "### LISTA DAS PESSOAS QUE FREQUENTAM O GINÁSIO POR ORDEM ALFABÉTICA DO NOME ###".
+                 */
+                System.out.println("### LISTA DAS PESSOAS QUE FREQUENTAM O GINÁSIO POR ORDEM ALFABÉTICA DO NOME ###");
+                System.out.println();
+                /**
+                 * Impressão de uma lista das pessoas que frequentam o ginásio por ordem alfabética do nome.
+                 */
+                ginasio.pessoasOrdemAlfab();
+                /**
+                 * Impressão da string "### LISTA DE TREINADORES - NOME, IDADE, NºSESSÕES, VENCIMENTO ###".
+                 */
+                System.out.println("### LISTA DE TREINADORES - NOME, IDADE, NºSESSÕES, VENCIMENTO ###");
+                System.out.println();
+                /**
+                 * Impressão de uma lista dos treinadores, com o nome, idade , nº de sessões e vencimento
+                 */
+                ginasio.listarTreinadores();
 
-        System.out.println();
-        /**
-         * Impressão da string "### LISTA DAS PESSOAS QUE FREQUENTAM O GINÁSIO POR ORDEM ALFABÉTICA DO NOME ###".
-         */
-        System.out.println("### LISTA DAS PESSOAS QUE FREQUENTAM O GINÁSIO POR ORDEM ALFABÉTICA DO NOME ###");
-        System.out.println();
-        /**
-         * Impressão de uma lista das pessoas que frequentam o ginásio por ordem alfabética do nome.
-         */
-        ginasio.pessoasOrdemAlfab();
-        /**
-         * Impressão da string "### LISTA DE TREINADORES - NOME, IDADE, NºSESSÕES, VENCIMENTO ###".
-         */
-        System.out.println("### LISTA DE TREINADORES - NOME, IDADE, NºSESSÕES, VENCIMENTO ###");
-        System.out.println();
-        /**
-         * Impressão de uma lista dos treinadores, com o nome, idade , nº de sessões e vencimento
-         */
-        ginasio.listarTreinadores();
+                System.out.println();
+                /**
+                 * Impressão da string "### VENCIMENTO TOTAL DOS TREINADORES ###"
+                 */
+                System.out.println("### VENCIMENTO TOTAL DOS TREINADORES ###");
 
-        System.out.println();
-        /**
-         * Impressão da string "### VENCIMENTO TOTAL DOS TREINADORES ###"
-         */
-        System.out.println("### VENCIMENTO TOTAL DOS TREINADORES ###");
+                System.out.println();
 
-        System.out.println();
+                /**
+                 * Impressão da string "Vencimento total dos treinadores: " e o valor total do vencimento dos treinadores
+                 */
+                System.out.printf("Vencimento total dos treinadores: %.2f€%n\n", ginasio.vencimentoTreinadores());
 
-        /**
-         * Impressão da string "Vencimento total dos treinadores: " e o valor total do vencimento dos treinadores
-         */
-        System.out.printf("Vencimento total dos treinadores: %.2f€%n\n",ginasio.vencimentoTreinadores());
+                System.out.println();
+                /**
+                 * Impressão da string "### VENCIMENTO TOTAL DOS FUNCIONÁRIOS ###"
+                 */
 
-        System.out.println();
-        /**
-         * Impressão da string "### VENCIMENTO TOTAL DOS FUNCIONÁRIOS ###"
-         */
+                System.out.println("### VENCIMENTO TOTAL DOS FUNCIONÁRIOS ###");
 
-        System.out.println("### VENCIMENTO TOTAL DOS FUNCIONÁRIOS ###");
+                System.out.println();
+                /**
+                 * Impressão da string "Vencimento total dos funcionários: " e o vencimento total dos treinadores
+                 */
 
-        System.out.println();
-        /**
-         * Impressão da string "Vencimento total dos funcionários: " e o vencimento total dos treinadores
-         */
+                System.out.printf("Vencimento total dos funcionários: %.2f€%n\n", ginasio.vencimentoFuncionarios());
 
-        System.out.printf("Vencimento total dos funcionários: %.2f€%n\n",ginasio.vencimentoFuncionarios());
+                System.out.println();
+                /**
+                 * Impressão da string "### TOTAL DE CLIENTES QUE FREQUENTARAM O GINÁSIO ###"
+                 */
 
-        System.out.println();
-        /**
-         * Impressão da string "### TOTAL DE CLIENTES QUE FREQUENTARAM O GINÁSIO ###"
-         */
+                System.out.println("### TOTAL DE CLIENTES QUE FREQUENTARAM O GINÁSIO ###");
 
-        System.out.println("### TOTAL DE CLIENTES QUE FREQUENTARAM O GINÁSIO ###");
+                System.out.println();
+                /**
+                 * Impressão da string "Total de clientes deste mês: " e total de clientes.
+                 */
 
-        System.out.println();
-        /**
-         * Impressão da string "Total de clientes deste mês: " e total de clientes.
-         */
+                System.out.printf("Total de clientes deste mês: %d\n", ginasio.contarClientes());
 
-        System.out.printf("Total de clientes deste mês: %d\n",ginasio.contarClientes());
+                System.out.println();
+                /**
+                 * Impressão da string "### VALOR A PAGAR POR CADA CLIENTE E RESPECTIVO TOTAL ###"
+                 */
 
-        System.out.println();
-        /**
-         * Impressão da string "### VALOR A PAGAR POR CADA CLIENTE E RESPECTIVO TOTAL ###"
-         */
+                System.out.println("### VALOR A PAGAR POR CADA CLIENTE E RESPECTIVO TOTAL ###");
+                System.out.println();
+                /**
+                 * Impressão de uma lista dos clientes com o valor a pagar por cada cliente e o valor
+                 * total de todos os clientes
+                 */
+                ginasio.calcularPagamentoClientes();
 
-        System.out.println("### VALOR A PAGAR POR CADA CLIENTE E RESPECTIVO TOTAL ###");
-        System.out.println();
-        /**
-         * Impressão de uma lista dos clientes com o valor a pagar por cada cliente e o valor
-         * total de todos os clientes
-         */
-        ginasio.calcularPagamentoClientes();
+                System.out.println();
+                /**
+                 * Impressão da string "### LISTA DE CLIENTES REGULARES ATIVOS POR ORDEM DECRESCENTE DO VALOR DE PAGAMENTO TOTAL ###"
+                 */
 
-        System.out.println();
-        /**
-         * Impressão da string "### LISTA DE CLIENTES REGULARES ATIVOS POR ORDEM DECRESCENTE DO VALOR DE PAGAMENTO TOTAL ###"
-         */
+                System.out.println("### LISTA DE CLIENTES REGULARES ATIVOS POR ORDEM DECRESCENTE DO VALOR DE PAGAMENTO TOTAL ###");
+                System.out.println();
+                /**
+                 * Impressão de uma lista dos clientes regulares ativos por ordem decrescente do valor de pagamento total
+                 */
+                ginasio.clientesAtivos();
 
-        System.out.println("### LISTA DE CLIENTES REGULARES ATIVOS POR ORDEM DECRESCENTE DO VALOR DE PAGAMENTO TOTAL ###");
-        System.out.println();
-        /**
-         * Impressão de uma lista dos clientes regulares ativos por ordem decrescente do valor de pagamento total
-         */
-        ginasio.clientesAtivos();
+                System.out.println();
 
-        System.out.println();
+                /**
+                 * Impressão da string "### MOSTRAR LISTA DE CLIENTES POR ORDEM CRESCENTE DE IMC -> NUMERO AULAS -> ORDEM ALFABÉTICA DE NOME ###"
+                 */
+                System.out.println("### MOSTRAR LISTA DE CLIENTES POR ORDEM CRESCENTE DE IMC -> NUMERO AULAS -> ORDEM ALFABÉTICA DE NOME ###");
+                System.out.println();
+                /**
+                 * Impressão de uma lista dos clientes por ordem crescente de IMC e em caso de terem o mesmo IMC, por ordem decrescente
+                 * do número de aulas e no caso de terem o mesmo IMC e o mesmo número de aulas, por ordem alfabética do nome.
+                 */
 
-        /**
-         * Impressão da string "### MOSTRAR LISTA DE CLIENTES POR ORDEM CRESCENTE DE IMC -> NUMERO AULAS -> ORDEM ALFABÉTICA DE NOME ###"
-         */
-        System.out.println("### MOSTRAR LISTA DE CLIENTES POR ORDEM CRESCENTE DE IMC -> NUMERO AULAS -> ORDEM ALFABÉTICA DE NOME ###");
-        System.out.println();
-        /**
-         * Impressão de uma lista dos clientes por ordem crescente de IMC e em caso de terem o mesmo IMC, por ordem decrescente
-         * do número de aulas e no caso de terem o mesmo IMC e o mesmo número de aulas, por ordem alfabética do nome.
-         */
+                ginasio.mostrarClientesPorOrdemIMC();
 
-        ginasio.mostrarClientesPorOrdemIMC();
+                System.out.println();
+                /**
+                 * Impressão da string "### MÉDIA DE IMC POR GÉNERO ###"
+                 */
 
-        System.out.println();
-        /**
-         * Impressão da string "### MÉDIA DE IMC POR GÉNERO ###"
-         */
+                System.out.println("### MÉDIA DE IMC POR GÉNERO ###");
+                System.out.println();
+                /**
+                 * Impressão da média do IMC para o género masculino e para o género feminino.
+                 */
 
-        System.out.println("### MÉDIA DE IMC POR GÉNERO ###");
-        System.out.println();
-        /**
-         * Impressão da média do IMC para o género masculino e para o género feminino.
-         */
+                ginasio.calcularMediaIMC();
 
-        ginasio.calcularMediaIMC();
+                System.out.println();
 
-        System.out.println();
+                System.out.println("### ADICIONAR UMA NOVA PESSOA A GINÁSIO DEPOIS DE VERIFICAR SE ESTA JA SE ENCONTRA NO GINÁSIO ###");
 
-        System.out.println("### ADICIONAR UMA NOVA PESSOA A GINÁSIO DEPOIS DE VERIFICAR SE ESTA JA SE ENCONTRA NO GINÁSIO ###");
+                System.out.println();
 
-        System.out.println();
+                /**
+                 * Criação de 1 objeto do tipo Treinador
+                 */
+                Data d1 = new Data(1992, 4, 6);
+                Treinador t4 = new Treinador("Laura Silva", "Avenida Municipal", Genero.FEMININO, d1, 900.0, 10, 9.0);
 
-        /**
-         * Criação de 1 objeto do tipo Treinador
-         */
-        Data d1 = new Data(1992, 4, 6);
-        Treinador t4 = new Treinador("Laura Silva", "Avenida Municipal", Genero.FEMININO, d1, 900.0, 10, 9.0);
+                System.out.println("### ADICIONAR O CLIENTE DAVID GOMES ###");
 
-        System.out.println("### ADICIONAR O CLIENTE DAVID GOMES ###");
+                System.out.println();
 
-        System.out.println();
+                /**
+                 * Adiciona uma nova pessoa ao ginásio após verificar se ela já se encontra no ginásio.
+                 * Se a pessoa já existir, a adição não é realizada e é exibida uma mensagem indicando que a pessoa já está na lista do ginásio.
+                 * Se a pessoa não existir, ela é adicionada  à lista do ginásio.
+                 *
+                 * @param cr1 A pessoa a ser adicionada ao ginásio.
+                 * @return {@code true} se a pessoa foi adicionada com sucesso, {@code false} se a pessoa já existir na lista do ginásio.
+                 */
 
-        /**
-         * Adiciona uma nova pessoa ao ginásio após verificar se ela já se encontra no ginásio.
-         * Se a pessoa já existir, a adição não é realizada e é exibida uma mensagem indicando que a pessoa já está na lista do ginásio.
-         * Se a pessoa não existir, ela é adicionada  à lista do ginásio.
-         *
-         * @param cr1 A pessoa a ser adicionada ao ginásio.
-         * @return {@code true} se a pessoa foi adicionada com sucesso, {@code false} se a pessoa já existir na lista do ginásio.
-         */
+                Data d2 = new Data(1990, 12, 16);
 
-        Data d2 = new Data(1990, 12, 16);
+                Regular cr1 = new Regular("Pedro Costa", "Rua Principal", Genero.MASCULINO, d2, 1.80f, 145, 0, 0, 50.0, 0, 0, false);
 
-        Regular cr1 = new Regular("Pedro Costa", "Rua Principal", Genero.MASCULINO, d2, 1.80f, 145, 0, 0, 50.0, 0, 0, false);
-
-        if (ginasio.adicionarPessoa(cr1)) {
-            System.out.println("Pessoa adicionada com sucesso!");
-        } else {
-            System.out.println("Pessoa já existe na lista do ginásio!");
-        }
-
-        System.out.println();
-
-        System.out.println("### ADICIONAR A NOVA TREINADORA DO GINÁSIO ###");
-
-        System.out.println();
-
-        /**
-         * Adiciona uma nova pessoa ao ginásio após verificar se ela já se encontra no ginásio.
-         * Se a pessoa já existir, a adição não é realizada e é exibida uma mensagem indicando que a pessoa já está na lista do ginásio.
-         * Se a pessoa não existir, ela é adicionada  à lista do ginásio.
-         *
-         * @param t4 A pessoa a ser adicionada ao ginásio.
-         * @return {@code true} se a pessoa foi adicionada com sucesso, {@code false} se a pessoa já existir na lista do ginásio.
-         */
-
-        if (ginasio.adicionarPessoa(t4)) {
-            System.out.println("Pessoa adicionada com sucesso!");
-        } else {
-            System.out.println("Pessoa já existe na lista do ginásio!");
-        }
-
-        System.out.println();
-
-        System.out.println("### LISTA DE TREINADORES DO GINÁSIO ATUALIZADA ###");
-
-        System.out.println();
-
-        /**
-         * Exibe a lista de treinadores do ginásio atualizada.
-         */
-         ginasio.listarTreinadores();
-    }
-    
-    public static Data lerData() {
-
-        Scanner ler = new Scanner(System.in);
-        Data d = new Data();
-        boolean dataInvalida = true;
-
-        System.out.print("Data de nascimento (ano/mes/dia): ");
-        do {
-            try {
-                String[] data = ler.nextLine().split("/");
-                if (data.length != 3) {
-                    throw new NumberFormatException();
+                if (ginasio.adicionarPessoa(cr1)) {
+                    System.out.println("Pessoa adicionada com sucesso!");
+                } else {
+                    System.out.println("Pessoa já existe na lista do ginásio!");
                 }
-                int ano = Integer.parseInt(data[0]);
-                int mes = Integer.parseInt(data[1]);
-                int dia = Integer.parseInt(data[2]);
 
-                d.setData(ano, mes, dia);
+                System.out.println();
 
-                dataInvalida = false;
-            } catch (NumberFormatException e) {
-                System.out.println("Formato é inválido!!");
-                System.out.print("Digite novamente a data de nascimento (ano/mes/dia): ");
-            } catch (DiaInvalidoException | MesInvalidoException e) {
-                System.out.println(e.getMessage());
-                System.out.print("Digite novamente a data de nascimento (ano/mes/dia): ");
-            }
-        } while (dataInvalida);
+                System.out.println("### ADICIONAR A NOVA TREINADORA DO GINÁSIO ###");
 
-        return d;
+                System.out.println();
+
+                /**
+                 * Adiciona uma nova pessoa ao ginásio após verificar se ela já se encontra no ginásio.
+                 * Se a pessoa já existir, a adição não é realizada e é exibida uma mensagem indicando que a pessoa já está na lista do ginásio.
+                 * Se a pessoa não existir, ela é adicionada  à lista do ginásio.
+                 *
+                 * @param t4 A pessoa a ser adicionada ao ginásio.
+                 * @return {@code true} se a pessoa foi adicionada com sucesso, {@code false} se a pessoa já existir na lista do ginásio.
+                 */
+
+                if (ginasio.adicionarPessoa(t4)) {
+                    System.out.println("Pessoa adicionada com sucesso!");
+                } else {
+                    System.out.println("Pessoa já existe na lista do ginásio!");
+                }
+
+                System.out.println();
+
+                System.out.println("### LISTA DE TREINADORES DO GINÁSIO ATUALIZADA ###");
+
+                System.out.println();
+
+                /**
+                 * Exibe a lista de treinadores do ginásio atualizada.
+                 */
+                ginasio.listarTreinadores();
+        }
     }
-}
+
+        public static Data lerData () {
+
+            Scanner ler = new Scanner(System.in);
+            Data d = new Data();
+            boolean dataInvalida = true;
+
+            System.out.print("Data de nascimento (ano/mes/dia): ");
+            do {
+                try {
+                    String[] data = ler.nextLine().split("/");
+                    if (data.length != 3) {
+                        throw new NumberFormatException();
+                    }
+                    int ano = Integer.parseInt(data[0]);
+                    int mes = Integer.parseInt(data[1]);
+                    int dia = Integer.parseInt(data[2]);
+
+                    d.setData(ano, mes, dia);
+
+                    dataInvalida = false;
+                } catch (NumberFormatException e) {
+                    System.out.println("Formato é inválido!!");
+                    System.out.print("Digite novamente a data de nascimento (ano/mes/dia): ");
+                } catch (DiaInvalidoException | MesInvalidoException e) {
+                    System.out.println(e.getMessage());
+                    System.out.print("Digite novamente a data de nascimento (ano/mes/dia): ");
+                }
+            } while (dataInvalida);
+
+            return d;
+        }
 }
