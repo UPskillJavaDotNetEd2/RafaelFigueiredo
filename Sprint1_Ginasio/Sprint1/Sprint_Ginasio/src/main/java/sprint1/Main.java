@@ -6,7 +6,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        /**
+         * Criação de uma instância da classe Ginásio
+         */
+        Ginasio ginasio = new Ginasio("Puxa-Ferro", "Travessa do Ferro, Peso da Regua - Portugal");
+
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Qual das opções corresponde à sua categoria de pessoa, que frequenta o ginásio?");
         System.out.println();
         String opcao1 = "Treinador";
@@ -150,9 +157,9 @@ public class Main {
                         System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
                     } catch (GeneroInvalidoException e) {
                         System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
-                    } catch (NumeroHorasPermanecimentoInvalidoException e) {
+                    } catch (NumeroHorasPermanecimentoException e) {
                         System.out.printf("** Erro no número de horas de permanecimento ** \n%s\n", e.getMessage());
-                    } catch (NumeroSessoesInvalidoException e) {
+                    } catch (NumeroDeSessoesInvalidoException e) {
                         System.out.printf("** Erro no número de sessões ** \n%s\n", e.getMessage());
                     } catch (CustoPorSessaoInvalidoException e) {
                         System.out.printf("** Erro no custo por sessão ** \n%s\n", e.getMessage());
@@ -202,9 +209,9 @@ public class Main {
                         System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
                     } catch (GeneroInvalidoException e) {
                         System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
-                    } catch (CustoMensalidadeInvalidException e) {
+                    } catch (CustoMensalidadeException e) {
                         System.out.printf("** Erro no custo da mensalidade ** \n%s\n", e.getMessage());
-                    } catch (NumeroSessoesInvalidoException e) {
+                    } catch (NumeroDeSessoesInvalidoException e) {
                         System.out.printf("** Erro no número de sessões ** \n%s\n", e.getMessage());
                     } catch (CustoPorSessaoInvalidoException e) {
                         System.out.printf("** Erro no custo por sessão ** \n%s\n", e.getMessage());
@@ -257,39 +264,6 @@ public class Main {
                 System.out.println("Opção inválida!");
         }
 
-
-    }
-    public static Data lerData() {
-
-        Scanner ler = new Scanner(System.in);
-        Data d = new Data();
-        boolean dataInvalida = true;
-
-        System.out.print("Data de nascimento (ano/mes/dia): ");
-        do {
-            try {
-                String[] data = ler.nextLine().split("/");
-                if (data.length != 3) {
-                    throw new NumberFormatException();
-                }
-                int ano = Integer.parseInt(data[0]);
-                int mes = Integer.parseInt(data[1]);
-                int dia = Integer.parseInt(data[2]);
-
-                d.setData(ano, mes, dia);
-
-                dataInvalida = false;
-            } catch (NumberFormatException e) {
-                System.out.println("Formato é inválido!!");
-                System.out.print("Digite novamente a data de nascimento (ano/mes/dia): ");
-            } catch (DiaInvalidoException | MesInvalidoException e) {
-                System.out.println(e.getMessage());
-                System.out.print("Digite novamente a data de nascimento (ano/mes/dia): ");
-            }
-        } while (dataInvalida);
-
-        return d;
-    }
 
         /**
          * Impressão da string "#####-:- GINÁSIO -:-####".
@@ -493,5 +467,37 @@ public class Main {
          * Exibe a lista de treinadores do ginásio atualizada.
          */
          ginasio.listarTreinadores();
+    }
+    
+    public static Data lerData() {
+
+        Scanner ler = new Scanner(System.in);
+        Data d = new Data();
+        boolean dataInvalida = true;
+
+        System.out.print("Data de nascimento (ano/mes/dia): ");
+        do {
+            try {
+                String[] data = ler.nextLine().split("/");
+                if (data.length != 3) {
+                    throw new NumberFormatException();
+                }
+                int ano = Integer.parseInt(data[0]);
+                int mes = Integer.parseInt(data[1]);
+                int dia = Integer.parseInt(data[2]);
+
+                d.setData(ano, mes, dia);
+
+                dataInvalida = false;
+            } catch (NumberFormatException e) {
+                System.out.println("Formato é inválido!!");
+                System.out.print("Digite novamente a data de nascimento (ano/mes/dia): ");
+            } catch (DiaInvalidoException | MesInvalidoException e) {
+                System.out.println(e.getMessage());
+                System.out.print("Digite novamente a data de nascimento (ano/mes/dia): ");
+            }
+        } while (dataInvalida);
+
+        return d;
     }
 }
