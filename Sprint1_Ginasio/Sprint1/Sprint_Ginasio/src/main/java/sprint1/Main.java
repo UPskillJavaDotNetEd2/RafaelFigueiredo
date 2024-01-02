@@ -2,8 +2,294 @@ package sprint1;
 
 import org.upskill.utils.Data;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Qual das opções corresponde à sua categoria de pessoa, que frequenta o ginásio?");
+        System.out.println();
+        String opcao1 = "Treinador";
+        String opcao2 = "Funcionário";
+        String opcao3 = "Cliente Convidado";
+        String opcao4 = "Cliente Regular";
+        String opcao5 = "Cliente Exporádico";
+        System.out.printf("[1] %s%n[2] %s%n[3] %s%n[4] %s%n[5] %s%n", opcao1, opcao2, opcao3, opcao4, opcao5);
+        int escolha = scanner.nextInt();
+        scanner.nextLine();
+
+        int contador = 1;
+        switch (escolha) {
+            case 1:
+                Treinador[] treinadores = new Treinador[3];
+                do {
+
+                    try {
+                        System.out.printf("### Treinador %d ###\n", contador);
+                        Treinador treinador = new Treinador();
+                        System.out.printf("Identificador: TREI-%d\n",contador);
+                        System.out.println("Nome: ");
+                        String nome = scanner.nextLine();
+                        treinador.setNome(nome);
+                        System.out.println("Morada: ");
+                        String morada = scanner.nextLine();
+                        treinador.setMorada(morada);
+                        System.out.println("Género (Masculino/Feminino): ");
+                        String genero = scanner.nextLine();
+                        treinador.setGenero(genero);
+                        Data data = lerData();
+                        System.out.println("Vencimento: ");
+                        String vencimento = scanner.nextLine();
+                        treinador.setVencimento(Double.parseDouble(vencimento));
+                        System.out.println("Número de sessões como Personal Trainer: ");
+                        String sessoesPersonalTrainer = scanner.nextLine();
+                        treinador.setSessoesPersonalTrainer(Integer.parseInt(sessoesPersonalTrainer));
+                        System.out.println("Custo por sessão como Personal Trainer: ");
+                        String custoSessao = scanner.nextLine();
+                        treinador.setCustoSessao(Double.parseDouble(custoSessao));
+
+                        treinadores[contador] = treinador;
+                        contador++;
+
+                    } catch (IdentificadorInvalidoException e) {
+                        System.out.printf("** Erro no identificador ** \n%s\n", e.getMessage());
+                    } catch (NomeInvalidoException e) {
+                        System.out.printf("** Erro no nome ** \n%s\n", e.getMessage());
+                    } catch (MoradaInvalidaException e) {
+                        System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
+                    } catch (GeneroInvalidoException e) {
+                        System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
+                    } catch (VencimentoInvalidoException e) {
+                        System.out.printf("** Erro no vencimento ** \n%s\n", e.getMessage());
+                    } catch (SessoesPersonalTrainerInvalidException e) {
+                        System.out.printf("** Erro no número de sessões ** \n%s\n", e.getMessage());
+                    } catch (CustoPorSessaoInvalidoException e) {
+                        System.out.printf("** Erro no custo por sessão ** \n%s\n", e.getMessage());
+
+                    }
+                } while (contador <= 3);
+                break;
+            case 2:
+
+                Funcionario[] funcionarios = new Funcionario[3];
+                do {
+
+                    try {
+                        System.out.printf("### Funcionário %d ###\n", contador);
+                        Funcionario funcionario = new Funcionario();
+                        System.out.printf("Identificador: FUNC-%d\n", contador);
+                        System.out.println("Nome: ");
+                        String nome = scanner.nextLine();
+                        funcionario.setNome(nome);
+                        System.out.println("Morada: ");
+                        String morada = scanner.nextLine();
+                        funcionario.setMorada(morada);
+                        System.out.println("Género (Masculino/Feminino): ");
+                        String genero = scanner.nextLine();
+                        funcionario.setGenero(genero);
+                        Data data = lerData();
+                        System.out.println("Número de clientes angariados: ");
+                        String numeroClientesAngariados = scanner.nextLine();
+                        funcionario.setNumeroClientesAngariados(Integer.parseInt(numeroClientesAngariados));
+
+                        funcionarios[contador] = funcionario;
+                        contador++;
+
+                    } catch (IdentificadorInvalidoException e) {
+                        System.out.printf("** Erro no identificador ** \n%s\n", e.getMessage());
+                    } catch (NomeInvalidoException e) {
+                        System.out.printf("** Erro no nome ** \n%s\n", e.getMessage());
+                    } catch (MoradaInvalidaException e) {
+                        System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
+                    } catch (GeneroInvalidoException e) {
+                        System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
+                    } catch (NumeroClientesAngariadosInvalidException e) {
+                        System.out.printf("** Erro no número de clientes angariados ** \n%s\n", e.getMessage());
+                    }
+                } while (contador <= 3);
+                break;
+            case 3:
+                Convidado[] convidados = new Convidado[3];
+                do {
+
+                    try {
+                        System.out.printf("### Cliente Convidado %d ###\n", contador);
+                        Convidado convidado = new Convidado();
+                        System.out.printf("Identificador: CLI-CONVIDADO-%d\n", contador);
+                        System.out.println("Nome: ");
+                        String nome = scanner.nextLine();
+                        convidado.setNome(nome);
+                        System.out.println("Morada: ");
+                        String morada = scanner.nextLine();
+                        convidado.setMorada(morada);
+                        System.out.println("Género (Masculino/Feminino): ");
+                        String genero = scanner.nextLine();
+                        convidado.setGenero(genero);
+                        Data data = lerData();
+                        System.out.println("Número de horas de permanecimento: ");
+                        String numeroHorasPermanecimento = scanner.nextLine();
+                        convidado.setNumeroHorasPermanecimento(Integer.parseInt(numeroHorasPermanecimento));
+                        System.out.println("Número de sessões: ");
+                        String numeroSessoes = scanner.nextLine();
+                        convidado.setNumeroSessoes(Integer.parseInt(numeroSessoes));
+                        System.out.println("Custo por sessão: ");
+                        String custoSessao = scanner.nextLine();
+                        convidado.setCustoPorSessao(Integer.parseInt(custoSessao));
+                        System.out.println("Banco de Horas: ");
+                        String bancoHoras = scanner.nextLine();
+                        convidado.setBancoHoras(Integer.parseInt(bancoHoras));
+
+                        convidados[contador] = convidado;
+                        contador++;
+
+                    } catch (IdentificadorInvalidoException e) {
+                        System.out.printf("** Erro no identificador ** \n%s\n", e.getMessage());
+                    } catch (NomeInvalidoException e) {
+                        System.out.printf("** Erro no nome ** \n%s\n", e.getMessage());
+                    } catch (MoradaInvalidaException e) {
+                        System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
+                    } catch (GeneroInvalidoException e) {
+                        System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
+                    } catch (NumeroHorasPermanecimentoInvalidoException e) {
+                        System.out.printf("** Erro no número de horas de permanecimento ** \n%s\n", e.getMessage());
+                    } catch (NumeroSessoesInvalidoException e) {
+                        System.out.printf("** Erro no número de sessões ** \n%s\n", e.getMessage());
+                    } catch (CustoPorSessaoInvalidoException e) {
+                        System.out.printf("** Erro no custo por sessão ** \n%s\n", e.getMessage());
+                    }
+
+                } while (contador <= 3);
+                break;
+            case 4:
+                Regular[] regulares = new Regular[3];
+                do {
+
+                    try {
+                        System.out.printf("### Cliente Regular %d ###\n", contador);
+                        Regular regular = new Regular();
+                        System.out.printf("Identificador: CLI-REGULAR-%d\n", contador);
+                        System.out.println("Nome: ");
+                        String nome = scanner.nextLine();
+                        regular.setNome(nome);
+                        System.out.println("Morada: ");
+                        String morada = scanner.nextLine();
+                        regular.setMorada(morada);
+                        System.out.println("Género (Masculino/Feminino): ");
+                        String genero = scanner.nextLine();
+                        regular.setGenero(genero);
+                        Data data = lerData();
+                        System.out.println("Custo da mensalidade: ");
+                        String custoMensalidade = scanner.nextLine();
+                        regular.setCustoMensalidade(Integer.parseInt(custoMensalidade));
+                        System.out.println("Número de sessões: ");
+                        String numeroSessoes = scanner.nextLine();
+                        regular.setNumeroSessoes(Integer.parseInt(numeroSessoes));
+                        System.out.println("Custo por sessão: ");
+                        String custoSessao = scanner.nextLine();
+                        regular.setCustoPorSessao(Integer.parseInt(custoSessao));
+                        System.out.println("Estado: ");
+                        String estado = scanner.nextLine();
+                        regular.setEstado(estado);
+
+                        regulares[contador] = regular;
+                        contador++;
+
+                    } catch (IdentificadorInvalidoException e) {
+                        System.out.printf("** Erro no identificador ** \n%s\n", e.getMessage());
+                    } catch (NomeInvalidoException e) {
+                        System.out.printf("** Erro no nome ** \n%s\n", e.getMessage());
+                    } catch (MoradaInvalidaException e) {
+                        System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
+                    } catch (GeneroInvalidoException e) {
+                        System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
+                    } catch (CustoMensalidadeInvalidException e) {
+                        System.out.printf("** Erro no custo da mensalidade ** \n%s\n", e.getMessage());
+                    } catch (NumeroSessoesInvalidoException e) {
+                        System.out.printf("** Erro no número de sessões ** \n%s\n", e.getMessage());
+                    } catch (CustoPorSessaoInvalidoException e) {
+                        System.out.printf("** Erro no custo por sessão ** \n%s\n", e.getMessage());
+                    }catch (EstadoInvalidoException e) {
+                        System.out.printf("** Erro no estado ** \n%s\n", e.getMessage());
+                    }
+
+                } while (contador <= 3);
+                break;
+            case 5:
+                Esporadico[] esporadicos = new Esporadico[3];
+                do {
+
+                    try {
+                        System.out.printf("### Cliente Esporádico %d ###\n", contador);
+                        Esporadico esporadico = new Esporadico();
+                        System.out.printf("Identificador: CLI-ESPORÁDICO-%d\n", contador);
+                        System.out.println("Nome: ");
+                        String nome = scanner.nextLine();
+                        esporadico.setNome(nome);
+                        System.out.println("Morada: ");
+                        String morada = scanner.nextLine();
+                        esporadico.setMorada(morada);
+                        System.out.println("Género (Masculino/Feminino): ");
+                        String genero = scanner.nextLine();
+                        esporadico.setGenero(genero);
+                        Data data = lerData();
+                        System.out.println("Número de horas de permanecimento: ");
+                        String numeroHorasPermanecimento = scanner.nextLine();
+                        esporadico.setNumeroHorasPermanecimento(Integer.parseInt(numeroHorasPermanecimento));
+
+                        esporadicos[contador] = esporadico;
+                        contador++;
+
+                    } catch (IdentificadorInvalidoException e) {
+                        System.out.printf("** Erro no identificador ** \n%s\n", e.getMessage());
+                    } catch (NomeInvalidoException e) {
+                        System.out.printf("** Erro no nome ** \n%s\n", e.getMessage());
+                    } catch (MoradaInvalidaException e) {
+                        System.out.printf("** Erro na morada ** \n%s\n", e.getMessage());
+                    } catch (GeneroInvalidoException e) {
+                        System.out.printf("** Erro no gênero ** \n%s\n", e.getMessage());
+                    }catch (NumeroHorasPermanecimentoInvalidoException e) {
+                        System.out.printf("** Erro no número de horas de Permanecimento ** \n%s\n", e.getMessage());
+                    }
+
+                } while (contador <= 3);
+                break;
+            default:
+                System.out.println("Opção inválida!");
+        }
+
+
+    }
+    public static Data lerData() {
+
+        Scanner ler = new Scanner(System.in);
+        Data d = new Data();
+        boolean dataInvalida = true;
+
+        System.out.print("Data de nascimento (ano/mes/dia): ");
+        do {
+            try {
+                String[] data = ler.nextLine().split("/");
+                if (data.length != 3) {
+                    throw new NumberFormatException();
+                }
+                int ano = Integer.parseInt(data[0]);
+                int mes = Integer.parseInt(data[1]);
+                int dia = Integer.parseInt(data[2]);
+
+                d.setData(ano, mes, dia);
+
+                dataInvalida = false;
+            } catch (NumberFormatException e) {
+                System.out.println("Formato é inválido!!");
+                System.out.print("Digite novamente a data de nascimento (ano/mes/dia): ");
+            } catch (DiaInvalidoException | MesInvalidoException e) {
+                System.out.println(e.getMessage());
+                System.out.print("Digite novamente a data de nascimento (ano/mes/dia): ");
+            }
+        } while (dataInvalida);
+
+        return d;
+    }
 
         /**
          * Impressão da string "#####-:- GINÁSIO -:-####".
